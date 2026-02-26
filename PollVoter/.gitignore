@@ -1,0 +1,18 @@
+# Build results
+bin/
+obj/
+
+# Build artifacts
+*.dll
+*.exe
+*.pdb
+*.cache
+
+# .NET specific files
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# NuGet Packages
+*.nupkg
+*.snupkg
