@@ -45,8 +45,7 @@ namespace PollVoter
 				var payload = new { votedFor = userChoice };
 				string jsonPayload = JsonSerializer.Serialize(payload);
 				HttpContent content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
-
-				response = await client.PostAsync("https://api.falcon1k.dev/poll/upload", content);
+				await client.PostAsync("https://api.falcon1k.dev/poll/upload", content);
 
 				Console.WriteLine("Vote uploaded successfully!");
 				Console.WriteLine("Visit https://api.falcon1k.dev/poll/fetch to see the results.");
