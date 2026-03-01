@@ -40,12 +40,12 @@ namespace PollVoter
 			Console.WriteLine($"Enter your choice (1-{currentPoll.Options.Length}):");
 			string? userInput = Console.ReadLine();
 
-			if (userInput != null && int.TryParse(userInput, out int userChoice) && userChoice >= 1 &&
-				userChoice <= currentPoll.Options.Length)
+			if (userInput != null && int.TryParse(userInput, out int userChoice) && userChoice - 1 >= 0 &&
+				userChoice - 1 < currentPoll.Options.Length)
 			{
 				Console.WriteLine($"You chose option {userChoice}. Uploading your vote...");
 
-				var payload = new { votedFor = userChoice };
+				var payload = new { votedFor = userChoice - 1 };
 				string jsonPayload = JsonSerializer.Serialize(payload);
 				HttpContent content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
 				await client.PostAsync("https://api.falcon1k.dev/poll/upload", content);
